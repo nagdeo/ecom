@@ -1,0 +1,7 @@
+.register_card{
+    border: 1px solid;
+    border-radius: 10px;
+    margin: auto;
+    width: 30rem;
+    padding: 2rem;
+}
