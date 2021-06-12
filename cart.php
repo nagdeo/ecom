@@ -1,7 +1,15 @@
+<html>
+    <head>
+    <link rel="stylesheet" href="css/cart.css"> 
+  </head>
 <?php   
-      session_start(); 
+     
       require 'connection.php';
       $conn = Connect();
+      include('login_user.php'); 
+    if(!isset($_SESSION['login_user'])){
+      header("location: login.php"); 
+    }
      $username=$_SESSION['login_user'];
      $sqluser = "SELECT * FROM register WHERE email = '$username' ";
      $resultUser = mysqli_query($conn, $sqluser);
@@ -25,7 +33,7 @@
 
       ?>
       <div class="container" style="padding-bottom:5rem;">
-                <table id="t01" style="margin-top: 10rem;">
+            <table id="t01" class="table-style">
                   <tr>
                       <th>Name</th>
                       <th>price</th> 
@@ -52,7 +60,7 @@
             while($rowuserItems = mysqli_fetch_assoc($resultOrdersItems)){
                 echo "<tr><td>" .$rowuserItems['name']."</td>
                  <td>".$rowuserItems['price']."</td>
-                 <td>".$rowuserItems['name']."</td>
+                 <td>".$roworders['date']."</td>
                  </tr>";
             $total=$total+$rowuserItems['price'];
               }
@@ -60,10 +68,16 @@
            
         }
         ?>
-             <!-- <tr >
+             <tr >
                  
                  <td colspan="3"><span style="float:right;margin-right: 2rem"><b>Total Price:&nbsp;&nbsp;</b><?php echo $total;?></span></td>
-             </tr> -->
+                
+             </tr>
+             <tr >
+                 
+                 <td colspan="3"><button style="float:right;margin-right: 2rem" class="proceed_btn"><a href="customcheckout.php" style="text-decoration:none;color:white">Proceed To checkout</a></button></td>
+                
+             </tr>
               </table>
       </div>
           <?php
@@ -74,3 +88,4 @@
          <p style="font-size: 3rem;text-align: center;margin-top: 20rem;">There are no orders</p>
       </div>    
   <?php }?>
+  </html>

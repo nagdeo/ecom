@@ -19,13 +19,14 @@
               $Iid = $_GET['id'];
             // var_dump($_GET['id']);
              $Iid= $Iid +0;
+             $d=date('Y-m-d');
              //var_dump($Iid);
-              $query = "INSERT into cart(r_id,i_id) VALUES('" .$row['r_id'] ."','" . $Iid ."')";
+              $query = "INSERT into cart(r_id,i_id,date) VALUES('" .$row['r_id'] ."','" . $Iid ."','" .$d."')";
               $register = $conn->query($query);
                  if (!$register){
                        die("Couldnt enter data: ".$conn->error);
                  }else{
-                     header("location: index.php"); 
+                     header("location: cart.php"); 
                  }
             }
            // header("location: register.php"); 

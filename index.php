@@ -24,11 +24,11 @@
     <?php
        $sql = "SELECT * FROM items";
        $result = mysqli_query($conn, $sql);
-   
+    $c=0;
     if (mysqli_num_rows($result) > 0)
     {
       $count=0;
-
+    $c++;
       while($row = mysqli_fetch_assoc($result)){
         if ($count == 0)
          echo "<div class='row rowMargin' style='margin-top:2rem;'>";
@@ -38,7 +38,7 @@
 
     <form method="post" action="order.php?id=<?php echo $row['i_id'];?>">
         <div class="mypanel card" style="text-transform: capitalize;border-radius: 5px" align="center">
-          <img src="<?php echo $row["img"]; ?>" style="height: 120px;width:100%" class="img-responsive">
+          <img src="<?php echo $row["img"]; ?>" style="height:250px;width:100%" class="img-responsive">
           <div class="card-text-orders">
             <h4 class="text-dark textellipsis"><?php echo $row["name"]; ?></h4>
             <h5 class="text-danger textellipsis">&#8377; <?php echo $row["price"]; ?></h5>
@@ -52,17 +52,21 @@
     </form>
   </div>
       
-<?php
-$count++;
-if($count==4)
-{
-  echo "</div>";
-  $count=0;
-}
-}
-    }
-?>
+      <?php
+         $count++;
+           if($count==4)
+           {
+             echo "</div>";
+             $count=0; 
+            }else if($c==mysqli_num_rows($result)){
+              echo "</div>";
+
+            }
+       }
+     }
+   ?>
 
 
  </body>
+ 
 </html>

@@ -1,0 +1,23 @@
+.table-style{
+    width: 100%;
+    text-align: center;
+    border: 1px solid ;
+    border-collapse: collapse;
+}
+.table-style tr td{
+    border: 1px solid black;
+    padding: 10px;
+}
+.table-style tr th{
+    border: 1px solid black;
+    padding: 10px;
+}
+.proceed_btn{
+    float: right;
+    margin-right: 2rem;
+    background: black;
+    color: white;
+    padding: 0.5rem 2rem;
+    border: 1px solid;
+    font-size: 1rem;
+}

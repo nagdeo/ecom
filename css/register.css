@@ -1,7 +1,35 @@
 .register_card{
     border: 1px solid;
-    border-radius: 10px;
+    border-radius: 5px;
     margin: auto;
     width: 30rem;
     padding: 2rem;
+}
+.w-100{
+  width: 100%;
+}
+.inputs{
+    padding: 0.5rem;
+    border-radius: 3px;
+    border: 1px solid black;
+}
+.submit_btn{
+    padding: 0.5rem;
+    background: black;
+    color: white;
+    border: 1px solid black;
+    font-size: 1.2rem;
+    cursor:pointer;
+    width: 100%;
+}
+.disable{
+    opacity:0.5;
+    pointer-events:none;
+    width: 100%;
+    padding: 0.5rem;
+    background: black;
+    color: white;
+    border: 1px solid black;
+    font-size: 1.2rem;
+    
 }
