@@ -2,6 +2,8 @@
     <head>
     <link rel="stylesheet" href="css/cart.css"> 
   </head>
+  <body>
+  
 <?php   
      
       require 'connection.php';
@@ -10,6 +12,7 @@
     if(!isset($_SESSION['login_user'])){
       header("location: login.php"); 
     }
+     include 'header.php';
      $username=$_SESSION['login_user'];
      $sqluser = "SELECT * FROM register WHERE email = '$username' ";
      $resultUser = mysqli_query($conn, $sqluser);
@@ -58,7 +61,7 @@
             {
                
             while($rowuserItems = mysqli_fetch_assoc($resultOrdersItems)){
-                echo "<tr><td>" .$rowuserItems['name']."</td>
+                echo "<tr><td style='text-transform:capitalize;'>" .$rowuserItems['name']."</td>
                  <td>".$rowuserItems['price']."</td>
                  <td>".$roworders['date']."</td>
                  </tr>";
@@ -85,7 +88,8 @@
       } else{
       ?>
       <div class="face" style="width: 100%;text-align: center;font-size: 2rem;height: 100%;color: darkolivegreen">
-         <p style="font-size: 3rem;text-align: center;margin-top: 20rem;">There are no orders</p>
+         <p style="font-size: 3rem;text-align: center;margin-top: 15rem;">There are no items In cart &#128542;</p>
+         <p style="font-size: 2rem;text-align: center;">Add Items To cart <a href="index.php">click here</a></p>
       </div>    
   <?php }?>
   </html>

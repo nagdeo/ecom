@@ -1,5 +1,6 @@
 
 (function() {
+    
     var customCheckout = customcheckout();
   
     var isCardNumberComplete = false;
@@ -199,6 +200,7 @@
         this.feedback = document.getElementById('feedback');
         this.feedback.innerHTML = checkMark + ' ' + message;
         this.feedback.classList.add('success');
+        $insertOrder="success";
       },
       processTokenError: function(error) {
         error = JSON.stringify(error, undefined, 2);

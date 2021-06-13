@@ -30,7 +30,7 @@ header("location: index.php");
 </head>
 <body>  
 
-
+<?php include 'header.php';?>
  <div class="register_card">
  <form method="post" action="" >  
   
@@ -38,7 +38,7 @@ header("location: index.php");
    <input type="text" onkeyup="manage(this)"  class=" w-100 inputs" name="email" id="email_login" placeholder="Email Id">
   
   <br><br>
-   <input type="text" onkeyup="manage(this)"  class="w-100 inputs" name="pass" id="pass_login" placeholder="Password">
+   <input type="password" onkeyup="manage(this)"  class="w-100 inputs" name="pass" id="pass_login" placeholder="Password">
   <br><br>
     <input type="submit"  class="disable" name="submit"
      disabled id="submit_login"
@@ -47,6 +47,8 @@ header("location: index.php");
 </form>
  </div>
 
+ <div class="error_login"><?php echo $error ?></div>
 
+ <?php include 'footer.php';?>
 </body>
 </html>

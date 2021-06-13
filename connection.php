@@ -8,8 +8,8 @@ function Connect()
 	$dbname = "ecommerce";
 
 	//Create Connection
-	$conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname) or die($conn->connect_error);
+	$conn1 = new mysqli($dbhost, $dbuser, $dbpass, $dbname) or die($conn->connect_error);
 
-	return $conn;
+	return $conn1;
 }
 ?>

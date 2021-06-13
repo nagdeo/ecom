@@ -4,6 +4,7 @@
     margin: auto;
     width: 30rem;
     padding: 2rem;
+    margin-top: 4rem;
 }
 .w-100{
   width: 100%;
@@ -32,4 +33,10 @@
     border: 1px solid black;
     font-size: 1.2rem;
     
+}
+.error_login{
+    text-align: center;
+    color: red;
+    margin-top: 1rem;
+    font-size: 1.4rem;
 }

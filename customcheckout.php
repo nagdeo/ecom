@@ -1,6 +1,7 @@
 
 <!-- <script src="js/checkout.js"></script> -->
 
+
 <html>
     <head>
        <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -66,10 +67,16 @@
     vertical-align: middle;
 }
 }
+.disabled{
+    pointer-events:none;
+}
        
         </style>
+   
+        
    </head>
 <body>
+
 <div class="container">
     <div class="row rows">
         <!-- Add form -->
@@ -86,10 +93,20 @@
                 <div id="card-expiry" class="form-control"></div>
                 <label class="help-block" for="card-expiry" id="card-expiry-error"></label>
             </div>
+            
             <div class="col-xs-12 text-center">
-                <button id="pay-button" type="submit" class="btn btn-primary disabled" disabled="true">Pay</button>
+            
+                <button id="pay-button" type="submit"  class="btn btn-primary disabled" disabled="true">
+                <a href="insertOrder.php" style="color:white;text-decoration:none">Pay</a></button>
+               
+               
             </div>
         </form>
+       
+    </div>
+    <div style="text-align:center;color:green;font-size:2rem;margin-top:1rem">
+    <p>Try it out using the test card number 4030 0000 1000 1234</p>
+        <p> The security code 123, and any expiration date in the future.</p>
     </div>
 </div>
 
@@ -98,6 +115,11 @@
         <div id="feedback"></div>
     </div>
 </div>
+
+
+
 <script src="js/checkout.js"> </script>
+
+
 </body>
 </html>

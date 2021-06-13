@@ -1,7 +1,12 @@
 <?php
   $error='';
   require 'connection.php';
-$conn = Connect();
+  $conn = Connect();
+  include('login_user.php'); 
+   if(isset($_SESSION['login_user'])){
+     header("location: login.php"); 
+   }
+
    if($_SERVER["REQUEST_METHOD"]=="POST"){
        $fullname = $conn->real_escape_string($_POST['name']);
        $email = $conn->real_escape_string($_POST['email']);
@@ -38,36 +43,81 @@ $conn = Connect();
 .error {color: #FF0000;}
 </style>
 <link rel="stylesheet" href="css/register.css"> 
+<script>
+ 
+    function manage(txt){
+      var email=document.getElementById("email_reg")
+    var pass=document.getElementById("pass_reg")
+    var name=document.getElementById("name_reg")
+    var address=document.getElementById("add_reg")
+   // var gender=document.getElementById("gender_reg")
+    var mobile=document.getElementById("mobile_reg")
+    if(email.value!=""  && pass.value!=""  && name.value!=""  && address.value!=""   && mobile.value!=""
+      && (document.getElementById("male").checked || document.getElementById("female").checked
+          || document.getElementById("other").checked )){
+        document.getElementById("submit_login").disabled=false;
+         
+        document.getElementById("submit_login").setAttribute('class','submit_btn');
+    }
+    else{
+        document.getElementById("submit_login").disabled=true;
+       
+        document.getElementById("submit_login").setAttribute('class','disable');
+    }
+  
+       
+ }
+  function  manageRadio(txt){
+    var email=document.getElementById("email_reg")
+    var pass=document.getElementById("pass_reg")
+    var name=document.getElementById("name_reg")
+    var address=document.getElementById("add_reg")
+    var mobile=document.getElementById("mobile_reg")
+    if (!document.getElementById("male").checked && !document.getElementById("female").checked
+          && !document.getElementById("other").checked) {
+          document.getElementById("submit_login").disabled=true;
+       
+          document.getElementById("submit_login").setAttribute('class','disable');
+        }else if(email.value!=""  && pass.value!=""  && name.value!=""  && address.value!=""   && mobile.value!=""){
+          document.getElementById("submit_login").disabled=false;
+         
+         document.getElementById("submit_login").setAttribute('class','submit_btn');
+        }
+  }
+</script>
 </head>
 <body>  
-
+<?php include 'header.php';?>
 
  <div class="register_card">
  <form method="post" action="">  
-  Name: <input type="text" name="name">
+ <input  id="name_reg" type="text" onkeyup="manage(this)" class="w-100" name="name" placeholder="Name">
   
   <br><br>
-  E-mail: <input type="text" name="email">
+  <input id="email_reg" type="email" onkeyup="manage(this)" class="w-100" name="email" placeholder="Email">
   
   <br><br>
-  Password: <input type="text" name="pass">
+   <input  id="pass_reg" type="password" onkeyup="manage(this)" name="pass" class="w-100" placeholder="Password">
  
   <br><br>
-  Number: <input type="text" name="number" >
+  <input onKeyPress="if(this.value.length==10) return false;"  id="mobile_reg" type="number" onkeyup="manage(this)" name="number" class="w-100" placeholder="Mobile No">
  
   <br><br>
-  Address: <textarea name="address" rows="5" cols="40"></textarea>
+   <textarea  id="add_reg" name="address" onkeyup="manage(this)" class="w-100" rows="5" cols="40" placeholder="Address"></textarea>
   <br><br>
+  <div class="w-100">
   Gender:
-  <input type="radio" name="gender" value="female">Female
-  <input type="radio" name="gender" value="male">Male
-  <input type="radio" name="gender"  value="other">Other  
- 
+  <input type="radio" id="female" onclick="manageRadio(this)" name="gender" value="female" style="margin-right:10px">Female
+  <span style="margin-right:10px"></span>
+  <input type="radio" id="male" onclick="manageRadio(this)" name="gender" value="male" style="margin-right:10px">Male
+  <span style="margin-right:10px"></span>
+  <input type="radio" id="other" onclick="manageRadio(this)" name="gender"  value="other" style="margin-right:10px">Other  
+  </div>
   <br><br>
-  <input type="submit" name="submit" value="Submit">  
+  <input type="submit" class="disable" id="submit_login" name="submit" value="Submit">  
 </form>
  </div>
 
-
+ <?php include 'footer.php';?>
 </body>
 </html>
