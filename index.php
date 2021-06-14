@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
  <head>
-  <title>Bootstrap Example</title>
+  <title>Shopzee</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -31,7 +31,7 @@
     $c++;
       while($row = mysqli_fetch_assoc($result)){
         if ($count == 0)
-         echo "<div class='row rowMargin' style='margin-top:2rem;'>";
+         echo "<div class='row rowMargin' style='margin-top:2rem;margin-bottom: 5rem;'>";
          $i_id=$row["i_id"];
     ?>
   <div class="col-md-3">

@@ -1,12 +1,10 @@
 <?php
   $error='';
+ 
   require 'connection.php';
   $conn = Connect();
-  include('login_user.php'); 
-   if(isset($_SESSION['login_user'])){
-     header("location: login.php"); 
-   }
-
+   
+   
    if($_SERVER["REQUEST_METHOD"]=="POST"){
        $fullname = $conn->real_escape_string($_POST['name']);
        $email = $conn->real_escape_string($_POST['email']);
@@ -89,7 +87,8 @@
 <body>  
 <?php include 'header.php';?>
 
- <div class="register_card">
+ <div class="register_card" style="margin-bottom: 5rem;">
+ <div style="color:red;font-size:1.3rem;text-align:center"><?php  echo $error?></div>
  <form method="post" action="">  
  <input  id="name_reg" type="text" onkeyup="manage(this)" class="w-100" name="name" placeholder="Name">
   
@@ -116,7 +115,11 @@
   <br><br>
   <input type="submit" class="disable" id="submit_login" name="submit" value="Submit">  
 </form>
+
+
  </div>
+ 
+  
 
  <?php include 'footer.php';?>
 </body>

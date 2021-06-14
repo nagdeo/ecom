@@ -35,7 +35,7 @@
       {
 
       ?>
-      <div class="container" style="padding-bottom:5rem;">
+<div class="container" style="padding-bottom:5rem;margin-bottom: 5rem;">
             <table id="t01" class="table-style">
                   <tr>
                       <th>Name</th>

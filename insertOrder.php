@@ -11,7 +11,8 @@
      $sqluser = "SELECT * FROM register WHERE email = '$username' ";
      $resultUser = mysqli_query($conn, $sqluser);
      $c_id=0;
-
+     $order_id=-1;
+     $order_id_else=0;
       if (mysqli_num_rows($resultUser) > 0)
       {
  
@@ -28,7 +29,7 @@
       if (mysqli_num_rows($resultOrders) > 0)
       {
         $total=0;
-
+       
         while($roworders = mysqli_fetch_assoc($resultOrders)){?>
            
                   <?php 
@@ -69,7 +70,7 @@
                              $order_id= $rowOrderId['o_id'];
                       } 
                    }
-                   
+                   $order_id_else=1;
                   ?>
              
               <?php
@@ -82,7 +83,7 @@
          }
         }
         if($order_id>0){
-            echo $c_id;
+            //echo $c_id;
             $query = "Delete from cart where r_id=".$c_id ;
             $success = $conn->query($query);   
             if(!$success)
@@ -94,12 +95,12 @@
             <div style="margin: auto;width:50%;text-align: center;margin-top:2rem ">
             <h3>Order Successfully Placed!!! &#128522;</h3>
             <h2>Your Order Id is <?php echo $order_id?></h2>
-            <h5>Please keep cash available with you.... </h5>
+           
             <h5>You will receive your order within 2 Business Days! &#128522;</h5>
             <h4>Do you want to order something else...<a href="index.php">Order Now</a>.</h4>
         </div>
        <?php }
-        else{?>
+        else if( $order_id_else!=1){?>
         <div style="text-align:center;margin-top:5rem;font-size:2rem;color:red">No Items in Cart</fiv>
       <?php }
       ?>
